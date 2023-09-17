@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short URL App</title>
+    <link rel="stylesheet" href="/index.ejs.css">
+</head>
+<body>
+    <h1>Short URL App</h1>
+    <form action="/shortUrls" method="post">
+        <input type="url" name="fullURL" id="" placeholder="Enter the url">
+        <button type="submit">Submit</button>
+    </form>
+    <br/>
+    <table border="1px">
+        <thead class="head">
+            <tr>
+                <th>SR No.</th>
+                <th>Full Url</th>
+                <th>Short Url</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody class="body">
+            <% shortUrls.forEach(urlData => { %>
+                <tr>
+                    <td class="sr"><%= urlData.count %></td>
+                    <td><a href="<%= urlData.full %>"><%= urlData.full %></a></td>
+                    <td><a href="<%= urlData.short %>"><%= urlData.short %></a></td>
+                    <td><%= urlData.clicks %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
